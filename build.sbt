@@ -83,15 +83,6 @@ lazy val root = project.in(file("."))
     libraryDependencies ++= appDependencies
   )
   
-aspectjSettings
-
-inputs in Aspectj <+= compiledClasses
-
-binaries in Aspectj <++= update map { report =>
-    report.matching(
-        moduleFilter(organization = "org.springframework", name = "spring-aspects")
-    )
-}
 
 products in Compile <<= products in Aspectj
 
